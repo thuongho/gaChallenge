@@ -2,15 +2,17 @@ require 'sinatra'
 
 # missing do
 get '/' do
-  File.read('index.html')
+  File.read('views/index.html')
 end
 
-get 'favorites' do
+# missing path
+get '/favorites' do
   response.header['Content-Type'] = 'application/json'
   File.read('data.json')
 end
 
-get '/favorites' do
+# change get to post
+post '/favorites' do
   file = JSON.parse(File.read('data.json'))
   # missing end or use single line
   # unless params[:name] && params[:oid]
